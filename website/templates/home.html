@@ -1,0 +1,32 @@
+{% extends "base.html" %}{% block title %}BGMA::Home{% endblock %} {% block content %}
+{% if data > 0 %}
+<div class="row">
+  {% for child in user.kids %}
+    <div class="col-md-6">
+        <div class="card mdb-color lighten-2 text-center z-depth-2">
+            <div class="card-header">{{ child.c_first_name }}</div>
+            <div class="card-body">
+                <img class="card-img-top" src="{{ url_for('static', filename='baby_' + child.c_gender + '.png') }}" width="40" height="350" alt="{{ child_c_first_name }}'s photo not available" />
+                <p class="card-text">{{ child.c_birth_date }}</p>
+            </div>
+            <div class="card-footer">
+                <a href="/add_measurements?child={{ child.id }}" class="btn btn-outline-primary" style="float:left">Add measurements</a>
+                <a href="/check_progress?child={{ child.id }}" class="btn btn-outline-success" style="float:right">Check progress</a>
+            </div>
+        </div>
+    <br />
+    </div>
+  {% endfor %}
+</div>
+<div>
+    <a href='/add_child' role="button" class="btn btn-outline-secondary btn-lg btn-block" >
+        <i class="fas fa-plus-square"> Add another child </i> <i class="fas fa-baby"></i>
+    </a>
+</div>
+{% else %}
+<div>
+    <a href='/add_child' role="button" class="btn btn-outline-secondary btn-lg btn-block">
+        <i class="fas fa-baby"> Add new child </i> <i class="fas fa-plus-square"></i>
+    </a>
+</div>
+{% endif %} {% endblock %}

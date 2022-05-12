@@ -1,0 +1,21 @@
+{% extends "base.html" %}{% block title %}BGMA::Add Measurements{% endblock %}
+
+{% block content %}
+<h1 align="center">Add measurements for {{ child.c_first_name + " " + child.c_last_name }}</h1>
+<form method="POST">
+    <div class="form-group">
+        <label for="child_height">Child Current Height</label>
+        <input type="text" class="form-control" id="child_height" name="child_height" placeholder="Enter child's current height" />
+    </div>
+    <div class="form-group">
+        <label for="child_weight">Child Current Weight</label>
+        <input type="text" class="form-control" id="child_weight" name="child_weight" placeholder="Enter child's current weight" />
+    </div>
+    <div class="form-group">
+        <label for="m_date">Date of measurement</label>
+        <input type="date" class="form-control" id="m_date" name="m_date" placeholder="Add date of measurements YYYY-MM-DD" />
+    </div>
+    <br/>
+    <button type="submit" class="btn btn-primary">Add measurements</button>
+</form>
+{% endblock %}

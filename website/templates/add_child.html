@@ -1,0 +1,37 @@
+{% extends "base.html" %}{% block title %}BGMA::Add Child{% endblock %}
+
+{% block content %}
+<h1 align="center">Add new child for {{ user.u_fname + " " + user.u_lname }} </h1>
+<form method="POST">
+    <div class="form-group">
+        <label for="c_fname">Child First Name</label>
+        <input type="text" class="form-control" id="c_fname" name="c_fname" placeholder="Enter child's first name" />
+    </div>
+    <div class="form-group">
+        <label for="c_lname">Child Last Name</label>
+        <input type="text" class="form-control" id="c_lname" name="c_lname" placeholder="Enter first name" value="{{ user.u_lname }}"/>
+    </div>
+    <div class="form-group">
+        <label for="c_birth_date">Child Birth Date</label>
+        <input type="date" class="form-control" id="c_birth_date" name="c_birth_date" placeholder="Enter birth date YYYY-MM-DD" />
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">Child Gender</label>
+        <select class="form-control" id="c_gender" name="c_gender">
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="c_height">Child's height at birth</label>
+        <input type="text" class="form-control" id="c_height" name="c_height" placeholder="Enter child's height at birth in cm" />
+    </div>
+    <div class="form-group">
+        <label for="c_weight">Child's weight at birth</label>
+        <input type="text" class="form-control" id="c_weight" name="c_weight" placeholder="Enter child's weight at birth kg.grams" />
+    </div>
+    
+    <br/>
+    <button type="submit" class="btn btn-primary">Add child</button>
+</form>
+{% endblock %}

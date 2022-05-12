@@ -1,0 +1,13 @@
+{% extends "base.html" %}{% block title %}BGMA::Check Progress{% endblock %}
+
+{% block content %}
+<h1 align="center">{{ child.c_first_name + " " + child.c_last_name }}'s Progress</h1>
+
+    {{ div | safe }}
+    {{ script | safe }}
+<div>
+    <a href="/add_measurements?child={{ child.id }}" role="button" class="btn btn-outline-secondary btn-lg btn-block">
+        <i class="fas fa-ruler-horizontal"> Add new measurements </i> <i class="fas fa-weight"></i>
+    </a>
+</div>
+{% endblock %}
