@@ -35,8 +35,8 @@ def create_app():
 
     return app
 
-print(app)
 def create_database(app):
     if not path.exists('./DB/' + DB_NAME):
-        db.create_all()
+        with app.app_context():
+            db.create_all()
         print('Created DATABASE!')
