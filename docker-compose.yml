@@ -1,0 +1,36 @@
+---
+version: '3'
+services:
+  mysql:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: super_secret_password
+      MYSQL_DATABASE: baby
+      MYSQL_USER: babyapp
+      MYSQL_PASSWORD: babyapp
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - '8081:80'
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: super_secret_password
+  
+  web:
+    build: ./webapp
+    restart: always
+    ports:
+     - '81:81'
+    volumes:
+      - ./webapp:/app
+
+
+volumes:
+  mysql_data:
