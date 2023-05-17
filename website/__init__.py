@@ -21,6 +21,7 @@ def create_app():
 
     from .models import User, Child, History
 
+    
     create_database(app)
 
     login_manager = LoginManager()
@@ -34,8 +35,8 @@ def create_app():
 
     return app
 
-
+print(app)
 def create_database(app):
     if not path.exists('./DB/' + DB_NAME):
-        db.create_all(app=app)
+        db.create_all()
         print('Created DATABASE!')
