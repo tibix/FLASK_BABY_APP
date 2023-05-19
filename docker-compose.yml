@@ -4,13 +4,14 @@ services:
   mysql:
     image: mysql
     restart: always
+    command: --init-file /data/application/init.sql
     environment:
+      MYSQL_ROOT_USER: root
       MYSQL_ROOT_PASSWORD: super_secret_password
-      MYSQL_DATABASE: baby
-      MYSQL_USER: babyapp
-      MYSQL_PASSWORD: babyapp
     volumes:
+      - ./init.sql:/data/application/init.sql
       - mysql_data:/var/lib/mysql
+    container_name: mysql_server
 
   phpmyadmin:
     image: phpmyadmin
@@ -22,6 +23,9 @@ services:
       PMA_PORT: 3306
       PMA_USER: root
       PMA_PASSWORD: super_secret_password
+    container_name: phpmyadmin
+    depends_on:
+      - mysql
   
   web:
     build: ./webapp
@@ -30,6 +34,9 @@ services:
      - '81:81'
     volumes:
       - ./webapp:/app
+    container_name: babyapp
+    depends_on:
+      - mysql
 
 
 volumes:

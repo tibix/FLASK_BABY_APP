@@ -9,7 +9,7 @@ DB_NAME = "baby"
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'mySuperSecretKey'
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://root:AnaFilipDelia2022!@localhost/{DB_NAME}'
+    app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://babyapp:Babyapp123!@mysql_server/{DB_NAME}'
     # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.init_app(app)
 
